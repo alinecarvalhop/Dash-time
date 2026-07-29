@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comparativo KPIs · Time alicarvalho · Jan–Abr 2026</title>
+<title>Comparativo KPIs · Time alicarvalho · Jan–Jul 2026</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Proxima Nova',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F5F5F5;color:#333;font-size:13px;}
@@ -79,19 +79,19 @@ table.q-table tr:nth-child(even) td{background:#FAFAFA;}
     <div class="logo">ML</div>
     <div>
       <h1>Comparativo KPIs — Time alicarvalho
-        <small>BR · Publicações Sellers Mature · Jan–Mai 2026</small>
+        <small>BR · Publicações Sellers Mature · Jan–Jul 2026</small>
       </h1>
     </div>
   </div>
   <div class="header-right">
     <strong>TL: alicarvalho</strong>
-    <span id="last-update">08/06/2026</span> · Fonte: meli-bi-data (BigQuery)
+    <span id="last-update">29/07/2026</span> · Fonte: meli-bi-data (BigQuery)
   </div>
 </div>
 
 <div class="subheader">
   <div class="item"><span style="opacity:.7">Time</span><strong>11 representantes</strong></div>
-  <div class="item"><span style="opacity:.7">Período</span><strong>Jan · Fev · Mar · Abr · Mai 2026</strong></div>
+  <div class="item"><span style="opacity:.7">Período</span><strong>Jan · Fev · Mar · Abr · Mai · Jun · Jul 2026</strong></div>
   <div class="item"><span style="opacity:.7">Indicadores</span><strong>NPS · Estilo · TMO · Produtividade · TDI · Online · Break · Falha · Coaching</strong></div>
   <div class="item"><span class="badge">Quartilizado por mês</span></div>
 </div>
@@ -103,6 +103,8 @@ table.q-table tr:nth-child(even) td{background:#FAFAFA;}
   <button class="month-btn" data-mes="mar" onclick="toggleMonth('mar')" style="background:#2D3277;color:#fff;border:1px solid #2D3277;border-radius:16px;padding:4px 14px;font-size:11px;font-weight:700;cursor:pointer;">Mar 2026</button>
   <button class="month-btn" data-mes="apr" onclick="toggleMonth('apr')" style="background:#2D3277;color:#fff;border:1px solid #2D3277;border-radius:16px;padding:4px 14px;font-size:11px;font-weight:700;cursor:pointer;">Abr 2026</button>
   <button class="month-btn" data-mes="mai" onclick="toggleMonth('mai')" style="background:#2D3277;color:#fff;border:1px solid #2D3277;border-radius:16px;padding:4px 14px;font-size:11px;font-weight:700;cursor:pointer;">Mai 2026</button>
+  <button class="month-btn" data-mes="jun" onclick="toggleMonth('jun')" style="background:#2D3277;color:#fff;border:1px solid #2D3277;border-radius:16px;padding:4px 14px;font-size:11px;font-weight:700;cursor:pointer;">Jun 2026</button>
+  <button class="month-btn" data-mes="jul" onclick="toggleMonth('jul')" style="background:#2D3277;color:#fff;border:1px solid #2D3277;border-radius:16px;padding:4px 14px;font-size:11px;font-weight:700;cursor:pointer;">Jul 2026</button>
   <span id="filter-info" style="font-size:10px;color:#888;margin-left:8px"></span>
 </div>
 <div class="tabs">
@@ -113,6 +115,8 @@ table.q-table tr:nth-child(even) td{background:#FAFAFA;}
   <div class="tab" onclick="switchTab('mar')">Março</div>
   <div class="tab" onclick="switchTab('apr')">Abril</div>
   <div class="tab" onclick="switchTab('mai')">Maio</div>
+  <div class="tab" onclick="switchTab('jun')">Junho</div>
+  <div class="tab" onclick="switchTab('jul')">Julho</div>
   <div class="tab" onclick="switchTab('tempos')">Tempos Detalhados</div>
   <div class="tab" onclick="switchTab('estilo')">Estilo — Momentos</div>
   <div class="tab" onclick="switchTab('diagnostico')">Diagnósticos</div>
@@ -127,6 +131,8 @@ table.q-table tr:nth-child(even) td{background:#FAFAFA;}
 <div id="tab-mar"       class="tab-content"><div class="container"><div id="ranking-mar"></div><div style="margin-top:20px"><div class="section-title">Tabela Detalhada — Mar 2026</div><div id="detail-mar"></div></div></div></div>
 <div id="tab-apr"       class="tab-content"><div class="container"><div id="ranking-apr"></div><div style="margin-top:20px"><div class="section-title">Tabela Detalhada — Abr 2026</div><div id="detail-apr"></div></div></div></div>
 <div id="tab-mai"       class="tab-content"><div class="container"><div id="ranking-mai"></div><div style="margin-top:20px"><div class="section-title">Tabela Detalhada — Mai 2026</div><div id="detail-mai"></div></div></div></div>
+<div id="tab-jun"       class="tab-content"><div class="container"><div id="ranking-jun"></div><div style="margin-top:20px"><div class="section-title">Tabela Detalhada — Jun 2026</div><div id="detail-jun"></div></div></div></div>
+<div id="tab-jul"       class="tab-content"><div class="container"><div id="ranking-jul"></div><div style="margin-top:20px"><div class="section-title">Tabela Detalhada — Jul 2026</div><div id="detail-jul"></div></div></div></div>
 <div id="tab-tempos"    class="tab-content"><div class="container"><div id="tempos-wrap"></div></div></div>
 <div id="tab-estilo"    class="tab-content"><div class="container"><div id="estilo-wrap"></div></div></div>
 <div id="tab-diagnostico" class="tab-content"><div class="container"><div id="diag-wrap"></div></div></div>
@@ -137,218 +143,218 @@ table.q-table tr:nth-child(even) td{background:#FAFAFA;}
 // ── DATA ──────────────────────────────────────────────────────────────────────
 const ALL_REPS  = ['aaugustinho','cafarias','lianadsilva','losouza','lyalves','marguedes','marlaraujo','phegoncalves','stdiniz','uizfsilva','vfarias'];
 const CORE_REPS = ALL_REPS;
-const MES       = ['jan','feb','mar','apr','mai'];
-const MES_LABEL = {jan:'Jan 2026', feb:'Fev 2026', mar:'Mar 2026', apr:'Abr 2026', mai:'Mai 2026'};
+const MES       = ['jan','feb','mar','apr','mai','jun','jul'];
+const MES_LABEL = {jan:'Jan 2026', feb:'Fev 2026', mar:'Mar 2026', apr:'Abr 2026', mai:'Mai 2026', jun:'Jun 2026', jul:'Jul 2026'};
 const COLORS10  = ['#2D3277','#00A650','#F23D4F','#FF7733','#3483FA','#9C27B0','#00ACC1','#795548','#E91E63','#607D8B','#FF5722'];
 
 const npsLineal = {
-  aaugustinho: {jan:66.7,  feb:58.3,  mar:44.4,  apr:66.7,  mai:100.0},
-  cafarias:    {jan:null,  feb:66.7,  mar:8.3,   apr:-100.0, mai:-100.0},
-  lianadsilva: {jan:88.9,  feb:42.9,  mar:60.0,  apr:100.0, mai:-33.3},
-  losouza:     {jan:100.0, feb:55.6,  mar:60.0,  apr:57.1,  mai:0.0},
-  lyalves:     {jan:87.5,  feb:null,  mar:44.4,  apr:0.0,   mai:100.0},
-  marguedes:   {jan:100.0, feb:null,  mar:60.0,  apr:null,  mai:null},
-  marlaraujo:  {jan:64.7,  feb:77.8,  mar:66.7,  apr:100.0, mai:100.0},
-  phegoncalves:{jan:71.4,  feb:null,  mar:42.9,  apr:33.3,  mai:null},
-  stdiniz:     {jan:71.4,  feb:100.0, mar:50.0,  apr:71.4,  mai:100.0},
-  uizfsilva:   {jan:100.0, feb:100.0, mar:100.0, apr:66.7,  mai:100.0},
-  vfarias:     {jan:50.0,  feb:100.0, mar:50.0,  apr:50.0,  mai:66.7},
+  aaugustinho: {jan:66.7,  feb:58.3,  mar:44.4,  apr:66.7,  mai:100.0, jun:40.0,  jul:100.0},
+  cafarias:    {jan:null,  feb:66.7,  mar:8.3,   apr:-100.0,mai:-100.0, jun:83.3,  jul:40.0},
+  lianadsilva: {jan:88.9,  feb:42.9,  mar:60.0,  apr:100.0, mai:-33.3, jun:100.0, jul:null},
+  losouza:     {jan:100.0, feb:55.6,  mar:60.0,  apr:57.1,  mai:0.0,   jun:0.0,   jul:60.0},
+  lyalves:     {jan:87.5,  feb:null,  mar:44.4,  apr:0.0,   mai:100.0, jun:100.0, jul:null},
+  marguedes:   {jan:100.0, feb:null,  mar:60.0,  apr:null,  mai:null,  jun:null,  jul:100.0},
+  marlaraujo:  {jan:64.7,  feb:77.8,  mar:66.7,  apr:100.0, mai:100.0, jun:100.0, jul:33.3},
+  phegoncalves:{jan:71.4,  feb:null,  mar:42.9,  apr:33.3,  mai:null,  jun:100.0, jul:100.0},
+  stdiniz:     {jan:71.4,  feb:100.0, mar:50.0,  apr:71.4,  mai:100.0, jun:100.0, jul:100.0},
+  uizfsilva:   {jan:100.0, feb:100.0, mar:100.0, apr:66.7,  mai:100.0, jun:100.0, jul:0.0},
+  vfarias:     {jan:50.0,  feb:100.0, mar:50.0,  apr:50.0,  mai:66.7,  jun:60.0,  jul:33.3},
 };
 
 const nps = {
-  aaugustinho: {jan:55.6,  feb:61.5,  mar:44.4,  apr:66.7,  mai:100.0},
-  cafarias:    {jan:null,  feb:42.9,  mar:15.4,  apr:-100.0, mai:-33.3},
-  lianadsilva: {jan:70.0,  feb:42.9,  mar:60.0,  apr:100.0, mai:0.0},
-  losouza:     {jan:100.0, feb:63.6,  mar:40.0,  apr:66.7,  mai:0.0},
-  lyalves:     {jan:90.9,  feb:null,  mar:50.0,  apr:-33.3, mai:100.0},
-  marguedes:   {jan:100.0, feb:null,  mar:100.0, apr:null,  mai:null},
-  marlaraujo:  {jan:61.1,  feb:80.0,  mar:69.2,  apr:100.0, mai:71.4},
-  phegoncalves:{jan:66.7,  feb:null,  mar:50.0,  apr:33.3,  mai:null},
-  stdiniz:     {jan:71.4,  feb:66.7,  mar:50.0,  apr:81.8,  mai:66.7},
-  uizfsilva:   {jan:75.0,  feb:100.0, mar:100.0, apr:71.4,  mai:100.0},
-  vfarias:     {jan:20.0,  feb:40.0,  mar:50.0,  apr:0.0,   mai:66.7},
+  aaugustinho: {jan:55.6,  feb:61.5,  mar:44.4,  apr:66.7,  mai:100.0, jun:40.0,  jul:100.0},
+  cafarias:    {jan:null,  feb:42.9,  mar:15.4,  apr:-100.0,mai:-33.3, jun:83.3,  jul:40.0},
+  lianadsilva: {jan:70.0,  feb:42.9,  mar:60.0,  apr:100.0, mai:0.0,   jun:100.0, jul:null},
+  losouza:     {jan:100.0, feb:63.6,  mar:40.0,  apr:66.7,  mai:0.0,   jun:-25.0, jul:60.0},
+  lyalves:     {jan:90.9,  feb:null,  mar:50.0,  apr:-33.3, mai:100.0, jun:100.0, jul:null},
+  marguedes:   {jan:100.0, feb:null,  mar:100.0, apr:null,  mai:null,  jun:null,  jul:100.0},
+  marlaraujo:  {jan:61.1,  feb:80.0,  mar:69.2,  apr:100.0, mai:71.4,  jun:100.0, jul:33.3},
+  phegoncalves:{jan:66.7,  feb:null,  mar:50.0,  apr:33.3,  mai:null,  jun:50.0,  jul:100.0},
+  stdiniz:     {jan:71.4,  feb:66.7,  mar:50.0,  apr:81.8,  mai:66.7,  jun:100.0, jul:0.0},
+  uizfsilva:   {jan:75.0,  feb:100.0, mar:100.0, apr:71.4,  mai:100.0, jun:75.0,  jul:0.0},
+  vfarias:     {jan:20.0,  feb:40.0,  mar:50.0,  apr:0.0,   mai:66.7,  jun:60.0,  jul:33.3},
 };
 
 const estilo = {
-  aaugustinho: {jan:56.5, feb:55.5, mar:59.5, apr:53.8, mai:57.7},
-  cafarias:    {jan:36.8, feb:45.7, mar:48.9, apr:48.0, mai:57.6},
-  lianadsilva: {jan:41.9, feb:42.3, mar:45.7, apr:49.8, mai:52.2},
-  losouza:     {jan:51.5, feb:52.5, mar:55.4, apr:60.8, mai:60.9},
-  lyalves:     {jan:53.4, feb:null, mar:61.5, apr:61.7, mai:70.8},
-  marguedes:   {jan:63.4, feb:74.2, mar:68.9, apr:null, mai:null},
-  marlaraujo:  {jan:46.3, feb:49.3, mar:51.0, apr:51.5, mai:51.3},
-  phegoncalves:{jan:47.5, feb:null, mar:48.2, apr:47.7, mai:42.4},
-  stdiniz:     {jan:47.5, feb:49.4, mar:51.5, apr:53.1, mai:58.9},
-  uizfsilva:   {jan:48.9, feb:48.5, mar:50.3, apr:57.3, mai:57.1},
-  vfarias:     {jan:50.9, feb:52.5, mar:56.4, apr:57.0, mai:61.9},
+  aaugustinho: {jan:56.5, feb:55.5, mar:59.5, apr:53.8, mai:57.7, jun:60.2, jul:61.8},
+  cafarias:    {jan:36.8, feb:45.7, mar:48.9, apr:48.0, mai:57.6, jun:64.2, jul:70.5},
+  lianadsilva: {jan:41.9, feb:42.3, mar:45.7, apr:49.8, mai:52.2, jun:56.9, jul:57.6},
+  losouza:     {jan:51.5, feb:52.5, mar:55.4, apr:60.8, mai:60.9, jun:64.2, jul:63.6},
+  lyalves:     {jan:53.4, feb:null, mar:61.5, apr:61.7, mai:70.8, jun:72.5, jul:null},
+  marguedes:   {jan:63.4, feb:74.2, mar:68.9, apr:null, mai:null, jun:null, jul:73.6},
+  marlaraujo:  {jan:46.3, feb:49.3, mar:51.0, apr:51.5, mai:51.3, jun:53.3, jul:58.2},
+  phegoncalves:{jan:47.5, feb:null, mar:48.2, apr:47.7, mai:42.4, jun:56.4, jul:50.8},
+  stdiniz:     {jan:47.5, feb:49.4, mar:51.5, apr:53.1, mai:58.9, jun:58.9, jul:61.3},
+  uizfsilva:   {jan:48.9, feb:48.5, mar:50.3, apr:57.3, mai:57.1, jun:60.1, jul:63.5},
+  vfarias:     {jan:50.9, feb:52.5, mar:56.4, apr:57.0, mai:61.9, jun:73.0, jul:73.2},
 };
 
 const tmo = {
-  aaugustinho: {jan:13.2, feb:14.3, mar:12.9, apr:15.3, mai:18.0},
-  cafarias:    {jan:21.9, feb:30.9, mar:22.4, apr:25.8, mai:23.6},
-  lianadsilva: {jan:24.2, feb:16.5, mar:18.7, apr:25.4, mai:16.1},
-  losouza:     {jan:24.3, feb:29.7, mar:21.4, apr:26.0, mai:22.7},
-  lyalves:     {jan:10.7, feb:null, mar:13.5, apr:15.6, mai:20.4},
-  marguedes:   {jan:8.0,  feb:9.6,  mar:9.9,  apr:null, mai:null},
-  marlaraujo:  {jan:41.2, feb:29.3, mar:24.2, apr:36.2, mai:21.6},
-  phegoncalves:{jan:25.3, feb:null, mar:20.2, apr:29.3, mai:19.3},
-  stdiniz:     {jan:17.1, feb:14.4, mar:15.4, apr:14.2, mai:14.8},
-  uizfsilva:   {jan:12.9, feb:12.9, mar:12.9, apr:20.4, mai:13.4},
-  vfarias:     {jan:31.6, feb:20.9, mar:26.7, apr:23.0, mai:16.6},
+  aaugustinho: {jan:13.2, feb:14.3, mar:12.9, apr:15.3, mai:18.0, jun:17.9, jul:18.8},
+  cafarias:    {jan:21.9, feb:30.9, mar:22.4, apr:25.8, mai:23.6, jun:19.9, jul:18.1},
+  lianadsilva: {jan:24.2, feb:16.5, mar:18.7, apr:25.4, mai:16.1, jun:17.2, jul:15.4},
+  losouza:     {jan:24.3, feb:29.7, mar:21.4, apr:26.0, mai:22.7, jun:17.7, jul:20.5},
+  lyalves:     {jan:10.7, feb:null, mar:13.5, apr:15.6, mai:20.4, jun:12.0, jul:null},
+  marguedes:   {jan:8.0,  feb:9.6,  mar:9.9,  apr:null, mai:null, jun:null, jul:12.7},
+  marlaraujo:  {jan:41.2, feb:29.3, mar:24.2, apr:36.2, mai:21.6, jun:19.7, jul:23.2},
+  phegoncalves:{jan:25.3, feb:null, mar:20.2, apr:29.3, mai:19.3, jun:17.3, jul:17.1},
+  stdiniz:     {jan:17.1, feb:14.4, mar:15.4, apr:14.2, mai:14.8, jun:11.2, jul:12.0},
+  uizfsilva:   {jan:12.9, feb:12.9, mar:12.9, apr:20.4, mai:13.4, jun:14.1, jul:14.3},
+  vfarias:     {jan:31.6, feb:20.9, mar:26.7, apr:23.0, mai:16.6, jun:16.8, jul:18.4},
 };
 
 const prod = {
-  aaugustinho: {jan:3.62, feb:3.48, mar:3.16, apr:3.11, mai:3.16},
-  cafarias:    {jan:3.15, feb:2.57, mar:2.89, apr:2.82, mai:2.78},
-  lianadsilva: {jan:3.10, feb:3.42, mar:3.23, apr:2.50, mai:2.89},
-  losouza:     {jan:2.52, feb:2.85, mar:3.05, apr:2.61, mai:3.11},
-  lyalves:     {jan:3.66, feb:null, mar:3.62, apr:3.55, mai:3.85},
-  marguedes:   {jan:3.44, feb:3.31, mar:3.25, apr:null, mai:null},
-  marlaraujo:  {jan:2.80, feb:3.07, mar:2.83, apr:2.24, mai:2.73},
-  phegoncalves:{jan:2.61, feb:null, mar:2.70, apr:2.35, mai:2.43},
-  stdiniz:     {jan:2.73, feb:2.81, mar:3.71, apr:3.44, mai:2.91},
-  uizfsilva:   {jan:3.17, feb:3.55, mar:3.31, apr:2.56, mai:3.07},
-  vfarias:     {jan:1.83, feb:2.36, mar:1.44, apr:1.84, mai:1.87},
+  aaugustinho: {jan:3.62, feb:3.48, mar:3.16, apr:3.11, mai:3.16, jun:2.85, jul:2.92},
+  cafarias:    {jan:3.15, feb:2.57, mar:2.89, apr:2.82, mai:2.78, jun:3.04, jul:3.15},
+  lianadsilva: {jan:3.10, feb:3.42, mar:3.23, apr:2.50, mai:2.89, jun:2.58, jul:2.60},
+  losouza:     {jan:2.52, feb:2.85, mar:3.05, apr:2.61, mai:3.11, jun:3.08, jul:3.06},
+  lyalves:     {jan:3.66, feb:null, mar:3.62, apr:3.55, mai:3.85, jun:3.74, jul:null},
+  marguedes:   {jan:3.44, feb:3.31, mar:3.25, apr:null, mai:null, jun:null, jul:2.71},
+  marlaraujo:  {jan:2.80, feb:3.07, mar:2.83, apr:2.24, mai:2.73, jun:2.93, jul:2.59},
+  phegoncalves:{jan:2.61, feb:null, mar:2.70, apr:2.35, mai:2.43, jun:2.31, jul:2.99},
+  stdiniz:     {jan:2.73, feb:2.81, mar:3.71, apr:3.44, mai:2.91, jun:2.48, jul:2.64},
+  uizfsilva:   {jan:3.17, feb:3.55, mar:3.31, apr:2.56, mai:3.07, jun:3.35, jul:3.83},
+  vfarias:     {jan:1.83, feb:2.36, mar:1.44, apr:1.84, mai:1.87, jun:1.91, jul:2.29},
 };
 
 const tdi = {
-  aaugustinho: {jan:5.0, feb:5.2, mar:5.2, apr:4.6, mai:null},
-  cafarias:    {jan:9.3, feb:5.4, mar:5.4, apr:5.1, mai:null},
-  lianadsilva: {jan:5.1, feb:5.8, mar:5.2, apr:5.2, mai:null},
-  losouza:     {jan:5.8, feb:5.3, mar:5.4, apr:5.1, mai:null},
-  lyalves:     {jan:4.9, feb:null, mar:5.4, apr:5.2, mai:null},
-  marguedes:   {jan:5.7, feb:6.3, mar:5.7, apr:null, mai:null},
-  marlaraujo:  {jan:5.1, feb:5.3, mar:5.5, apr:4.7, mai:null},
-  phegoncalves:{jan:4.9, feb:null, mar:5.2, apr:4.8, mai:null},
-  stdiniz:     {jan:5.0, feb:5.3, mar:5.6, apr:5.1, mai:null},
-  uizfsilva:   {jan:5.0, feb:5.5, mar:5.4, apr:5.1, mai:null},
-  vfarias:     {jan:5.0, feb:5.4, mar:5.8, apr:4.9, mai:null},
+  aaugustinho: {jan:5.0, feb:5.2, mar:5.2, apr:4.6, mai:null, jun:null, jul:null},
+  cafarias:    {jan:9.3, feb:5.4, mar:5.4, apr:5.1, mai:null, jun:null, jul:null},
+  lianadsilva: {jan:5.1, feb:5.8, mar:5.2, apr:5.2, mai:null, jun:null, jul:null},
+  losouza:     {jan:5.8, feb:5.3, mar:5.4, apr:5.1, mai:null, jun:null, jul:null},
+  lyalves:     {jan:4.9, feb:null, mar:5.4, apr:5.2, mai:null, jun:null, jul:null},
+  marguedes:   {jan:5.7, feb:6.3, mar:5.7, apr:null, mai:null, jun:null, jul:null},
+  marlaraujo:  {jan:5.1, feb:5.3, mar:5.5, apr:4.7, mai:null, jun:null, jul:null},
+  phegoncalves:{jan:4.9, feb:null, mar:5.2, apr:4.8, mai:null, jun:null, jul:null},
+  stdiniz:     {jan:5.0, feb:5.3, mar:5.6, apr:5.1, mai:null, jun:null, jul:null},
+  uizfsilva:   {jan:5.0, feb:5.5, mar:5.4, apr:5.1, mai:null, jun:null, jul:null},
+  vfarias:     {jan:5.0, feb:5.4, mar:5.8, apr:4.9, mai:null, jun:null, jul:null},
 };
 
 const tOnline = {
-  aaugustinho: {jan:null, feb:null, mar:83.7, apr:80.1, mai:null},
-  cafarias:    {jan:null, feb:null, mar:81.4, apr:80.2, mai:null},
-  lianadsilva: {jan:null, feb:null, mar:82.7, apr:80.3, mai:null},
-  losouza:     {jan:null, feb:null, mar:83.4, apr:80.1, mai:null},
-  lyalves:     {jan:null, feb:null, mar:80.0, apr:57.2, mai:null},
-  marguedes:   {jan:null, feb:null, mar:41.2, apr:null, mai:null},
-  marlaraujo:  {jan:null, feb:null, mar:80.6, apr:78.6, mai:null},
-  phegoncalves:{jan:null, feb:null, mar:82.5, apr:82.4, mai:null},
-  stdiniz:     {jan:null, feb:null, mar:80.9, apr:78.6, mai:null},
-  uizfsilva:   {jan:null, feb:null, mar:65.2, apr:81.8, mai:null},
-  vfarias:     {jan:null, feb:null, mar:81.0, apr:82.3, mai:null},
+  aaugustinho: {jan:null, feb:null, mar:83.7, apr:80.1, mai:null, jun:null, jul:null},
+  cafarias:    {jan:null, feb:null, mar:81.4, apr:80.2, mai:null, jun:null, jul:null},
+  lianadsilva: {jan:null, feb:null, mar:82.7, apr:80.3, mai:null, jun:null, jul:null},
+  losouza:     {jan:null, feb:null, mar:83.4, apr:80.1, mai:null, jun:null, jul:null},
+  lyalves:     {jan:null, feb:null, mar:80.0, apr:57.2, mai:null, jun:null, jul:null},
+  marguedes:   {jan:null, feb:null, mar:41.2, apr:null, mai:null, jun:null, jul:null},
+  marlaraujo:  {jan:null, feb:null, mar:80.6, apr:78.6, mai:null, jun:null, jul:null},
+  phegoncalves:{jan:null, feb:null, mar:82.5, apr:82.4, mai:null, jun:null, jul:null},
+  stdiniz:     {jan:null, feb:null, mar:80.9, apr:78.6, mai:null, jun:null, jul:null},
+  uizfsilva:   {jan:null, feb:null, mar:65.2, apr:81.8, mai:null, jun:null, jul:null},
+  vfarias:     {jan:null, feb:null, mar:81.0, apr:82.3, mai:null, jun:null, jul:null},
 };
 
 const tBreak = {
-  aaugustinho: {jan:null, feb:null, mar:14.6, apr:16.2, mai:null},
-  cafarias:    {jan:null, feb:null, mar:14.8, apr:14.4, mai:null},
-  lianadsilva: {jan:null, feb:null, mar:13.4, apr:13.2, mai:null},
-  losouza:     {jan:null, feb:null, mar:13.8, apr:14.6, mai:null},
-  lyalves:     {jan:null, feb:null, mar:14.9, apr:15.0, mai:null},
-  marguedes:   {jan:null, feb:null, mar:15.8, apr:null, mai:null},
-  marlaraujo:  {jan:null, feb:null, mar:15.7, apr:14.5, mai:null},
-  phegoncalves:{jan:null, feb:null, mar:14.0, apr:13.5, mai:null},
-  stdiniz:     {jan:null, feb:null, mar:12.4, apr:13.8, mai:null},
-  uizfsilva:   {jan:null, feb:null, mar:14.7, apr:14.6, mai:null},
-  vfarias:     {jan:null, feb:null, mar:14.3, apr:14.3, mai:null},
+  aaugustinho: {jan:null, feb:null, mar:14.6, apr:16.2, mai:null, jun:null, jul:null},
+  cafarias:    {jan:null, feb:null, mar:14.8, apr:14.4, mai:null, jun:null, jul:null},
+  lianadsilva: {jan:null, feb:null, mar:13.4, apr:13.2, mai:null, jun:null, jul:null},
+  losouza:     {jan:null, feb:null, mar:13.8, apr:14.6, mai:null, jun:null, jul:null},
+  lyalves:     {jan:null, feb:null, mar:14.9, apr:15.0, mai:null, jun:null, jul:null},
+  marguedes:   {jan:null, feb:null, mar:15.8, apr:null, mai:null, jun:null, jul:null},
+  marlaraujo:  {jan:null, feb:null, mar:15.7, apr:14.5, mai:null, jun:null, jul:null},
+  phegoncalves:{jan:null, feb:null, mar:14.0, apr:13.5, mai:null, jun:null, jul:null},
+  stdiniz:     {jan:null, feb:null, mar:12.4, apr:13.8, mai:null, jun:null, jul:null},
+  uizfsilva:   {jan:null, feb:null, mar:14.7, apr:14.6, mai:null, jun:null, jul:null},
+  vfarias:     {jan:null, feb:null, mar:14.3, apr:14.3, mai:null, jun:null, jul:null},
 };
 
 const tFalha = {
-  aaugustinho: {jan:null, feb:null, mar:0.1, apr:0.0, mai:null},
-  cafarias:    {jan:null, feb:null, mar:1.0, apr:3.3, mai:null},
-  lianadsilva: {jan:null, feb:null, mar:0.0, apr:0.2, mai:null},
-  losouza:     {jan:null, feb:null, mar:0.3, apr:1.2, mai:null},
-  lyalves:     {jan:null, feb:null, mar:0.0, apr:0.0, mai:null},
-  marguedes:   {jan:null, feb:null, mar:3.9, apr:null, mai:null},
-  marlaraujo:  {jan:null, feb:null, mar:0.0, apr:0.4, mai:null},
-  phegoncalves:{jan:null, feb:null, mar:0.0, apr:0.1, mai:null},
-  stdiniz:     {jan:null, feb:null, mar:0.9, apr:2.3, mai:null},
-  uizfsilva:   {jan:null, feb:null, mar:0.0, apr:0.0, mai:null},
-  vfarias:     {jan:null, feb:null, mar:0.2, apr:0.1, mai:null},
+  aaugustinho: {jan:null, feb:null, mar:0.1, apr:0.0, mai:null, jun:null, jul:null},
+  cafarias:    {jan:null, feb:null, mar:1.0, apr:3.3, mai:null, jun:null, jul:null},
+  lianadsilva: {jan:null, feb:null, mar:0.0, apr:0.2, mai:null, jun:null, jul:null},
+  losouza:     {jan:null, feb:null, mar:0.3, apr:1.2, mai:null, jun:null, jul:null},
+  lyalves:     {jan:null, feb:null, mar:0.0, apr:0.0, mai:null, jun:null, jul:null},
+  marguedes:   {jan:null, feb:null, mar:3.9, apr:null, mai:null, jun:null, jul:null},
+  marlaraujo:  {jan:null, feb:null, mar:0.0, apr:0.4, mai:null, jun:null, jul:null},
+  phegoncalves:{jan:null, feb:null, mar:0.0, apr:0.1, mai:null, jun:null, jul:null},
+  stdiniz:     {jan:null, feb:null, mar:0.9, apr:2.3, mai:null, jun:null, jul:null},
+  uizfsilva:   {jan:null, feb:null, mar:0.0, apr:0.0, mai:null, jun:null, jul:null},
+  vfarias:     {jan:null, feb:null, mar:0.2, apr:0.1, mai:null, jun:null, jul:null},
 };
 
 const tCoaching = {
-  aaugustinho: {jan:null, feb:null, mar:1.2,  apr:0.0,  mai:null},
-  cafarias:    {jan:null, feb:null, mar:2.5,  apr:0.7,  mai:null},
-  lianadsilva: {jan:null, feb:null, mar:2.9,  apr:1.4,  mai:null},
-  losouza:     {jan:null, feb:null, mar:2.2,  apr:0.2,  mai:null},
-  lyalves:     {jan:null, feb:null, mar:3.0,  apr:24.3, mai:null},
-  marguedes:   {jan:null, feb:null, mar:37.1, apr:null, mai:null},
-  marlaraujo:  {jan:null, feb:null, mar:3.4,  apr:0.9,  mai:null},
-  phegoncalves:{jan:null, feb:null, mar:3.4,  apr:0.6,  mai:null},
-  stdiniz:     {jan:null, feb:null, mar:5.8,  apr:0.5,  mai:null},
-  uizfsilva:   {jan:null, feb:null, mar:20.2, apr:0.0,  mai:null},
-  vfarias:     {jan:null, feb:null, mar:4.5,  apr:0.0,  mai:null},
+  aaugustinho: {jan:null, feb:null, mar:1.2,  apr:0.0,  mai:null, jun:null, jul:null},
+  cafarias:    {jan:null, feb:null, mar:2.5,  apr:0.7,  mai:null, jun:null, jul:null},
+  lianadsilva: {jan:null, feb:null, mar:2.9,  apr:1.4,  mai:null, jun:null, jul:null},
+  losouza:     {jan:null, feb:null, mar:2.2,  apr:0.2,  mai:null, jun:null, jul:null},
+  lyalves:     {jan:null, feb:null, mar:3.0,  apr:24.3, mai:null, jun:null, jul:null},
+  marguedes:   {jan:null, feb:null, mar:37.1, apr:null, mai:null, jun:null, jul:null},
+  marlaraujo:  {jan:null, feb:null, mar:3.4,  apr:0.9,  mai:null, jun:null, jul:null},
+  phegoncalves:{jan:null, feb:null, mar:3.4,  apr:0.6,  mai:null, jun:null, jul:null},
+  stdiniz:     {jan:null, feb:null, mar:5.8,  apr:0.5,  mai:null, jun:null, jul:null},
+  uizfsilva:   {jan:null, feb:null, mar:20.2, apr:0.0,  mai:null, jun:null, jul:null},
+  vfarias:     {jan:null, feb:null, mar:4.5,  apr:0.0,  mai:null, jun:null, jul:null},
 };
 
 const tLogadoH = {
-  aaugustinho: {jan:null, feb:null, mar:109.72, apr:68.25, mai:null},
-  cafarias:    {jan:null, feb:null, mar:128.88, apr:81.45, mai:null},
-  lianadsilva: {jan:null, feb:null, mar:153.52, apr:82.57, mai:null},
-  losouza:     {jan:null, feb:null, mar:143.70, apr:98.78, mai:null},
-  lyalves:     {jan:null, feb:null, mar:125.15, apr:91.13, mai:null},
-  marguedes:   {jan:null, feb:null, mar:132.77, apr:null,  mai:null},
-  marlaraujo:  {jan:null, feb:null, mar:140.68, apr:95.52, mai:null},
-  phegoncalves:{jan:null, feb:null, mar:136.88, apr:83.08, mai:null},
-  stdiniz:     {jan:null, feb:null, mar:65.57,  apr:96.85, mai:null},
-  uizfsilva:   {jan:null, feb:null, mar:149.43, apr:94.07, mai:null},
-  vfarias:     {jan:null, feb:null, mar:42.13,  apr:96.93, mai:null},
+  aaugustinho: {jan:null, feb:null, mar:109.72, apr:68.25, mai:null, jun:null, jul:null},
+  cafarias:    {jan:null, feb:null, mar:128.88, apr:81.45, mai:null, jun:null, jul:null},
+  lianadsilva: {jan:null, feb:null, mar:153.52, apr:82.57, mai:null, jun:null, jul:null},
+  losouza:     {jan:null, feb:null, mar:143.70, apr:98.78, mai:null, jun:null, jul:null},
+  lyalves:     {jan:null, feb:null, mar:125.15, apr:91.13, mai:null, jun:null, jul:null},
+  marguedes:   {jan:null, feb:null, mar:132.77, apr:null,  mai:null, jun:null, jul:null},
+  marlaraujo:  {jan:null, feb:null, mar:140.68, apr:95.52, mai:null, jun:null, jul:null},
+  phegoncalves:{jan:null, feb:null, mar:136.88, apr:83.08, mai:null, jun:null, jul:null},
+  stdiniz:     {jan:null, feb:null, mar:65.57,  apr:96.85, mai:null, jun:null, jul:null},
+  uizfsilva:   {jan:null, feb:null, mar:149.43, apr:94.07, mai:null, jun:null, jul:null},
+  vfarias:     {jan:null, feb:null, mar:42.13,  apr:96.93, mai:null, jun:null, jul:null},
 };
 
 const tOnlineH = {
-  aaugustinho: {jan:null, feb:null, mar:91.80,  apr:54.68, mai:null},
-  cafarias:    {jan:null, feb:null, mar:104.95, apr:65.30, mai:null},
-  lianadsilva: {jan:null, feb:null, mar:126.93, apr:66.32, mai:null},
-  losouza:     {jan:null, feb:null, mar:119.88, apr:79.07, mai:null},
-  lyalves:     {jan:null, feb:null, mar:100.18, apr:52.13, mai:null},
-  marguedes:   {jan:null, feb:null, mar:54.68,  apr:null,  mai:null},
-  marlaraujo:  {jan:null, feb:null, mar:113.35, apr:75.08, mai:null},
-  phegoncalves:{jan:null, feb:null, mar:112.93, apr:68.48, mai:null},
-  stdiniz:     {jan:null, feb:null, mar:53.03,  apr:76.12, mai:null},
-  uizfsilva:   {jan:null, feb:null, mar:97.38,  apr:76.97, mai:null},
-  vfarias:     {jan:null, feb:null, mar:34.13,  apr:79.80, mai:null},
+  aaugustinho: {jan:null, feb:null, mar:91.80,  apr:54.68, mai:null, jun:null, jul:null},
+  cafarias:    {jan:null, feb:null, mar:104.95, apr:65.30, mai:null, jun:null, jul:null},
+  lianadsilva: {jan:null, feb:null, mar:126.93, apr:66.32, mai:null, jun:null, jul:null},
+  losouza:     {jan:null, feb:null, mar:119.88, apr:79.07, mai:null, jun:null, jul:null},
+  lyalves:     {jan:null, feb:null, mar:100.18, apr:52.13, mai:null, jun:null, jul:null},
+  marguedes:   {jan:null, feb:null, mar:54.68,  apr:null,  mai:null, jun:null, jul:null},
+  marlaraujo:  {jan:null, feb:null, mar:113.35, apr:75.08, mai:null, jun:null, jul:null},
+  phegoncalves:{jan:null, feb:null, mar:112.93, apr:68.48, mai:null, jun:null, jul:null},
+  stdiniz:     {jan:null, feb:null, mar:53.03,  apr:76.12, mai:null, jun:null, jul:null},
+  uizfsilva:   {jan:null, feb:null, mar:97.38,  apr:76.97, mai:null, jun:null, jul:null},
+  vfarias:     {jan:null, feb:null, mar:34.13,  apr:79.80, mai:null, jun:null, jul:null},
 };
 
 const tBreakH = {
-  aaugustinho: {jan:null, feb:null, mar:15.98, apr:11.08, mai:null},
-  cafarias:    {jan:null, feb:null, mar:19.07, apr:11.70, mai:null},
-  lianadsilva: {jan:null, feb:null, mar:20.58, apr:10.93, mai:null},
-  losouza:     {jan:null, feb:null, mar:19.83, apr:14.40, mai:null},
-  lyalves:     {jan:null, feb:null, mar:18.70, apr:13.65, mai:null},
-  marguedes:   {jan:null, feb:null, mar:21.00, apr:null,  mai:null},
-  marlaraujo:  {jan:null, feb:null, mar:22.13, apr:13.88, mai:null},
-  phegoncalves:{jan:null, feb:null, mar:19.17, apr:11.18, mai:null},
-  stdiniz:     {jan:null, feb:null, mar:8.15,  apr:13.32, mai:null},
-  uizfsilva:   {jan:null, feb:null, mar:21.92, apr:13.73, mai:null},
-  vfarias:     {jan:null, feb:null, mar:6.03,  apr:13.82, mai:null},
+  aaugustinho: {jan:null, feb:null, mar:15.98, apr:11.08, mai:null, jun:null, jul:null},
+  cafarias:    {jan:null, feb:null, mar:19.07, apr:11.70, mai:null, jun:null, jul:null},
+  lianadsilva: {jan:null, feb:null, mar:20.58, apr:10.93, mai:null, jun:null, jul:null},
+  losouza:     {jan:null, feb:null, mar:19.83, apr:14.40, mai:null, jun:null, jul:null},
+  lyalves:     {jan:null, feb:null, mar:18.70, apr:13.65, mai:null, jun:null, jul:null},
+  marguedes:   {jan:null, feb:null, mar:21.00, apr:null,  mai:null, jun:null, jul:null},
+  marlaraujo:  {jan:null, feb:null, mar:22.13, apr:13.88, mai:null, jun:null, jul:null},
+  phegoncalves:{jan:null, feb:null, mar:19.17, apr:11.18, mai:null, jun:null, jul:null},
+  stdiniz:     {jan:null, feb:null, mar:8.15,  apr:13.32, mai:null, jun:null, jul:null},
+  uizfsilva:   {jan:null, feb:null, mar:21.92, apr:13.73, mai:null, jun:null, jul:null},
+  vfarias:     {jan:null, feb:null, mar:6.03,  apr:13.82, mai:null, jun:null, jul:null},
 };
 
 const tFalhaH = {
-  aaugustinho: {jan:null, feb:null, mar:0.10, apr:0.00, mai:null},
-  cafarias:    {jan:null, feb:null, mar:1.28, apr:2.67, mai:null},
-  lianadsilva: {jan:null, feb:null, mar:0.00, apr:0.20, mai:null},
-  losouza:     {jan:null, feb:null, mar:0.40, apr:1.15, mai:null},
-  lyalves:     {jan:null, feb:null, mar:0.00, apr:0.00, mai:null},
-  marguedes:   {jan:null, feb:null, mar:5.22, apr:null, mai:null},
-  marlaraujo:  {jan:null, feb:null, mar:0.00, apr:0.40, mai:null},
-  phegoncalves:{jan:null, feb:null, mar:0.00, apr:0.05, mai:null},
-  stdiniz:     {jan:null, feb:null, mar:0.58, apr:2.23, mai:null},
-  uizfsilva:   {jan:null, feb:null, mar:0.00, apr:0.00, mai:null},
-  vfarias:     {jan:null, feb:null, mar:0.07, apr:0.08, mai:null},
+  aaugustinho: {jan:null, feb:null, mar:0.10, apr:0.00, mai:null, jun:null, jul:null},
+  cafarias:    {jan:null, feb:null, mar:1.28, apr:2.67, mai:null, jun:null, jul:null},
+  lianadsilva: {jan:null, feb:null, mar:0.00, apr:0.20, mai:null, jun:null, jul:null},
+  losouza:     {jan:null, feb:null, mar:0.40, apr:1.15, mai:null, jun:null, jul:null},
+  lyalves:     {jan:null, feb:null, mar:0.00, apr:0.00, mai:null, jun:null, jul:null},
+  marguedes:   {jan:null, feb:null, mar:5.22, apr:null, mai:null, jun:null, jul:null},
+  marlaraujo:  {jan:null, feb:null, mar:0.00, apr:0.40, mai:null, jun:null, jul:null},
+  phegoncalves:{jan:null, feb:null, mar:0.00, apr:0.05, mai:null, jun:null, jul:null},
+  stdiniz:     {jan:null, feb:null, mar:0.58, apr:2.23, mai:null, jun:null, jul:null},
+  uizfsilva:   {jan:null, feb:null, mar:0.00, apr:0.00, mai:null, jun:null, jul:null},
+  vfarias:     {jan:null, feb:null, mar:0.07, apr:0.08, mai:null, jun:null, jul:null},
 };
 
 const tCoachingH = {
-  aaugustinho: {jan:null, feb:null, mar:1.37,  apr:0.00,  mai:null},
-  cafarias:    {jan:null, feb:null, mar:3.25,  apr:0.60,  mai:null},
-  lianadsilva: {jan:null, feb:null, mar:4.50,  apr:1.18,  mai:null},
-  losouza:     {jan:null, feb:null, mar:3.17,  apr:0.20,  mai:null},
-  lyalves:     {jan:null, feb:null, mar:3.70,  apr:22.15, mai:null},
-  marguedes:   {jan:null, feb:null, mar:49.32, apr:null,  mai:null},
-  marlaraujo:  {jan:null, feb:null, mar:4.85,  apr:0.87,  mai:null},
-  phegoncalves:{jan:null, feb:null, mar:4.62,  apr:0.50,  mai:null},
-  stdiniz:     {jan:null, feb:null, mar:3.80,  apr:0.48,  mai:null},
-  uizfsilva:   {jan:null, feb:null, mar:30.13, apr:0.00,  mai:null},
-  vfarias:     {jan:null, feb:null, mar:1.90,  apr:0.00,  mai:null},
+  aaugustinho: {jan:null, feb:null, mar:1.37,  apr:0.00,  mai:null, jun:null, jul:null},
+  cafarias:    {jan:null, feb:null, mar:3.25,  apr:0.60,  mai:null, jun:null, jul:null},
+  lianadsilva: {jan:null, feb:null, mar:4.50,  apr:1.18,  mai:null, jun:null, jul:null},
+  losouza:     {jan:null, feb:null, mar:3.17,  apr:0.20,  mai:null, jun:null, jul:null},
+  lyalves:     {jan:null, feb:null, mar:3.70,  apr:22.15, mai:null, jun:null, jul:null},
+  marguedes:   {jan:null, feb:null, mar:49.32, apr:null,  mai:null, jun:null, jul:null},
+  marlaraujo:  {jan:null, feb:null, mar:4.85,  apr:0.87,  mai:null, jun:null, jul:null},
+  phegoncalves:{jan:null, feb:null, mar:4.62,  apr:0.50,  mai:null, jun:null, jul:null},
+  stdiniz:     {jan:null, feb:null, mar:3.80,  apr:0.48,  mai:null, jun:null, jul:null},
+  uizfsilva:   {jan:null, feb:null, mar:30.13, apr:0.00,  mai:null, jun:null, jul:null},
+  vfarias:     {jan:null, feb:null, mar:1.90,  apr:0.00,  mai:null, jun:null, jul:null},
 };
 
 const estiloMom = {
@@ -357,77 +363,76 @@ const estiloMom = {
     feb:{inicio:64.8,exp:27.6,guia:44.5,fecha:64.4,como:80.3,total:56.4,casos:52},
     mar:{inicio:72.8,exp:33.9,guia:46.2,fecha:61.7,como:82.6,total:59.5,casos:45},
     apr:{inicio:69.7,exp:26.5,guia:44.6,fecha:64.6,como:68.9,total:54.8,casos:28},
-    mai:null,
+    mai:null, jun:null, jul:null,
   },
   cafarias: {
     jan:{inicio:40.0,exp:11.0,guia:24.0,fecha:62.0,como:63.9,total:40.0,casos:7},
     feb:{inicio:40.6,exp:27.0,guia:36.5,fecha:60.6,como:67.1,total:46.3,casos:43},
     mar:{inicio:54.4,exp:29.1,guia:34.6,fecha:70.5,como:66.4,total:51.0,casos:55},
     apr:{inicio:68.8,exp:28.6,guia:36.9,fecha:63.3,como:55.3,total:50.6,casos:37},
-    mai:null,
+    mai:null, jun:null, jul:null,
   },
   lianadsilva: {
     jan:{inicio:44.7,exp:17.0,guia:25.1,fecha:66.7,como:70.3,total:44.8,casos:51},
     feb:{inicio:33.1,exp:22.5,guia:27.2,fecha:74.1,como:68.4,total:45.0,casos:50},
     mar:{inicio:36.4,exp:27.2,guia:30.1,fecha:73.6,como:71.3,total:47.7,casos:54},
     apr:{inicio:64.8,exp:34.4,guia:30.9,fecha:75.6,como:56.2,total:52.4,casos:38},
-    mai:null,
+    mai:null, jun:null, jul:null,
   },
   losouza: {
     jan:{inicio:47.5,exp:31.8,guia:46.0,fecha:75.1,como:72.4,total:54.4,casos:8},
     feb:{inicio:39.0,exp:41.5,guia:46.2,fecha:86.3,como:66.6,total:55.9,casos:53},
     mar:{inicio:48.7,exp:47.5,guia:41.1,fecha:80.3,como:67.9,total:57.2,casos:59},
     apr:{inicio:54.0,exp:64.6,guia:41.2,fecha:78.8,como:69.0,total:61.5,casos:25},
-    mai:null,
+    mai:null, jun:null, jul:null,
   },
   lyalves: {
     jan:{inicio:40.7,exp:37.1,guia:49.2,fecha:90.3,como:73.0,total:58.0,casos:58},
     feb:null,
     mar:{inicio:50.6,exp:49.9,guia:52.0,fecha:87.0,como:79.4,total:63.8,casos:46},
     apr:{inicio:74.4,exp:57.2,guia:43.6,fecha:75.4,como:62.5,total:62.6,casos:31},
-    mai:null,
+    mai:null, jun:null, jul:null,
   },
   marguedes: {
     jan:{inicio:66.8,exp:40.6,guia:48.7,fecha:72.1,como:91.6,total:64.0,casos:38},
     feb:{inicio:85.0,exp:53.0,guia:79.0,fecha:58.5,como:91.7,total:73.5,casos:4},
     mar:{inicio:72.6,exp:55.9,guia:51.1,fecha:64.8,como:92.7,total:67.4,casos:33},
-    apr:null,
-    mai:null,
+    apr:null, mai:null, jun:null, jul:null,
   },
   marlaraujo: {
     jan:{inicio:45.8,exp:14.8,guia:28.6,fecha:92.9,como:76.1,total:51.6,casos:61},
     feb:{inicio:41.8,exp:13.7,guia:33.5,fecha:97.3,como:83.5,total:54.0,casos:50},
     mar:{inicio:49.3,exp:18.0,guia:32.5,fecha:94.2,como:81.8,total:55.1,casos:46},
     apr:{inicio:65.2,exp:26.1,guia:29.2,fecha:89.9,como:69.5,total:56.0,casos:33},
-    mai:null,
+    mai:null, jun:null, jul:null,
   },
   phegoncalves: {
     jan:{inicio:43.7,exp:26.3,guia:41.3,fecha:79.5,como:67.8,total:51.7,casos:58},
     feb:null,
     mar:{inicio:47.6,exp:28.2,guia:39.2,fecha:72.1,como:67.1,total:50.8,casos:51},
     apr:{inicio:65.2,exp:32.4,guia:39.4,fecha:63.5,como:59.3,total:51.9,casos:30},
-    mai:null,
+    mai:null, jun:null, jul:null,
   },
   stdiniz: {
     jan:{inicio:45.4,exp:24.3,guia:32.1,fecha:89.5,como:71.3,total:52.4,casos:54},
     feb:{inicio:46.8,exp:27.9,guia:33.0,fecha:83.7,como:72.5,total:52.7,casos:47},
     mar:{inicio:47.9,exp:33.2,guia:34.5,fecha:82.3,como:72.8,total:54.1,casos:28},
     apr:{inicio:68.7,exp:36.6,guia:33.8,fecha:91.7,como:55.3,total:57.3,casos:36},
-    mai:null,
+    mai:null, jun:null, jul:null,
   },
   uizfsilva: {
     jan:{inicio:48.7,exp:23.2,guia:42.8,fecha:90.2,como:67.9,total:54.6,casos:51},
     feb:{inicio:46.6,exp:25.2,guia:45.3,fecha:88.9,como:62.1,total:53.6,casos:18},
     mar:{inicio:51.7,exp:30.4,guia:37.5,fecha:82.5,como:66.6,total:53.8,casos:55},
     apr:{inicio:70.0,exp:52.7,guia:37.7,fecha:87.8,como:43.1,total:58.3,casos:30},
-    mai:null,
+    mai:null, jun:null, jul:null,
   },
   vfarias: {
     jan:{inicio:64.4,exp:18.3,guia:36.1,fecha:63.6,como:81.1,total:52.7,casos:41},
     feb:{inicio:55.4,exp:32.2,guia:38.7,fecha:63.7,como:75.8,total:53.2,casos:53},
     mar:{inicio:63.0,exp:49.5,guia:32.0,fecha:51.5,como:76.2,total:54.4,casos:13},
     apr:{inicio:58.3,exp:65.3,guia:41.1,fecha:51.2,como:57.7,total:54.7,casos:30},
-    mai:null,
+    mai:null, jun:null, jul:null,
   },
 };
 
@@ -453,7 +458,7 @@ const MOMENTOS = [
 ];
 
 // ── MONTH FILTER STATE ─────────────────────────────────────────────────────────
-let selectedMonths = ['jan','feb','mar','apr','mai'];
+let selectedMonths = ['jan','feb','mar','apr','mai','jun','jul'];
 
 function toggleMonth(m){
   if(selectedMonths.includes(m)){
@@ -521,7 +526,7 @@ function fmtHHMM(h){
 }
 
 function switchTab(id){
-  const ids=['overview','matriz','jan','feb','mar','apr','mai','tempos','estilo','diagnostico','evolucao'];
+  const ids=['overview','matriz','jan','feb','mar','apr','mai','jun','jul','tempos','estilo','diagnostico','evolucao'];
   document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',ids[i]===id));
   document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
   document.getElementById('tab-'+id).classList.add('active');
@@ -533,7 +538,7 @@ function buildOverview(){
   const filtMES=MES.filter(m=>selectedMonths.includes(m));
   const first=filtMES[0], last=filtMES[filtMES.length-1];
   document.getElementById('filter-info').textContent=
-    selectedMonths.length===5?'Todos os meses':`Exibindo: ${filtMES.map(m=>MES_LABEL[m]).join(', ')}`;
+    selectedMonths.length===7?'Todos os meses':`Exibindo: ${filtMES.map(m=>MES_LABEL[m]).join(', ')}`;
   let html=`<div class="section-title">Médias do Time por Mês ${selectedMonths.length<5?'<span style="background:#FFE600;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;color:#333">Filtrado</span>':''}</div>
   <div class="q-table-wrap"><table class="q-table" style="min-width:600px">
   <thead><tr><th style="text-align:left;padding-left:14px">Indicador</th><th>Direção</th>
@@ -574,7 +579,7 @@ function buildMatriz(){
   const el=document.getElementById('matriz-wrap');
   const filtMES=MES.filter(m=>selectedMonths.includes(m));
   let html=`<div class="section-title">Matriz de Quartis — ${filtMES.map(m=>MES_LABEL[m]).join(' / ')}
-    ${selectedMonths.length<5?'<span style="background:#FFE600;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;color:#333">Filtrado</span>':''}
+    ${selectedMonths.length<7?'<span style="background:#FFE600;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;color:#333">Filtrado</span>':''}
   </div>
   <div style="background:#EAF1FD;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:11px;color:#2D3277">
     <b>Fórmula:</b> Q1 = melhor 25% (≥ P75 para ↑ / ≤ P25 para ↓) · Q2 = P50–P75 · Q3 = P25–P50 · Q4 = pior 25%
@@ -945,6 +950,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 <div style="background:#2D3277;color:rgba(255,255,255,.6);padding:14px 32px;font-size:11px;margin-top:8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
   <span>Fontes: DM_CX_DISCOVER_REP_METRICS · BT_FACT_STATUS_LOGS_REP_SFTP · DM_CX_QM_METRIC_ESTILO_QS_REPORTING — meli-bi-data.WHOWNER</span>
-  <span style="color:#FFE600;font-weight:700">TL: alicarvalho · Abr 2026</span>
+  <span style="color:#FFE600;font-weight:700">TL: alicarvalho · Jul 2026</span>
 </div>
 </body></html>
